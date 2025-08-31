@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaadi Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+:root{
+      --bg: #0b1020;
+      --card: #121833;
+      --muted: #a7b1cc;
+      --text: #e8ecf8;
+      --primary: #6ea8ff;
+      --primary-600:#4c86eb;
+      --ring: rgba(110,168,255,.5);
+      --success:#22c55e;
+      --warning:#f59e0b;
+      --error:#ef4444;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
+      --glass: rgba(255,255,255,.04);
+      --border: 1px solid rgba(255,255,255,.08);
+    }
+  </style>
+
+</style>
+    
+</head>
+<body>
+    <div class="container">
+    <nav class="nav">
+      <div class="brand"><div class="brand__logo" aria-hidden="true"></div>Shaadi.in</div>
+      <div class="row">
+        <a class="badge" href="#form">Jump to form</a>
+        <button class="btn btn--ghost" id="themeToggle" aria-label="Toggle theme">Toggle Theme</button>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero__bg"></div>
+      <div class="hero__content">
+        <div class="card" style="padding:22px">
+          <h1 style="margin:4px 0 8px;font-size:clamp(24px, 3vw, 34px);letter-spacing:-.3px">Marriage Portal</h1>
+          <p style="margin:0 0 18px;color:var(--muted)">Fill in the details below to submit your Information. We will help you to find the type of partner you want</p>
+          
+          <form id="form" class="form" novalidate>
+            <div class="field">
+              <label for="fullName">Full name</label>
+              <input id="fullName" name="fullName" class="input" type="text" placeholder="yourname" autocomplete="name" required />
+              <div class="error" data-for="fullName">Please enter your full name.</div>
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" class="input" type="email" placeholder="azhan@example.com" autocomplete="email" required />
+              <div class="error" data-for="email">Enter a valid email address.</div>
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" class="input" type="tel" placeholder="+91 98765 43210" autocomplete="tel" pattern="^[+\d][\d\s-]{7,}$" />
+              <div class="help">Include country code if outside India.</div>
+            </div>
+            <div class="field">
+              <label for="date">Birth date</label>
+              <input id="date" name="date" class="input" type="date" required />
+              <div class="error" data-for="date">Please select a date.</div>
+            </div>
+
+            <div class="field full">
+              <label for="address">Address</label>
+              <input id="address" name="address" class="input" type="text" placeholder="Street, City, State" autocomplete="street-address" />
+            </div>
+
+            <div class="field">
+ <label for="profession">Profession</label>
+<select id="type" name="profession" required>
+  <option value="" disabled selected>Select Profession</option>
+  <option>Software Engineer</option>
+  <option>Doctor</option>
+  <option>Teacher</option>
+  <option>Business</option>
+  <option>Government Job</option>
+  <option>Student</option>
+  <option>Other</option>
+</select>
+
+
+              <div class="error" data-for="type">Please choose a filing type.</div>
+            </div>
+
+            <div class="field">
+              <label for="priority">Your current status</label>
+              <div class="row" role="radiogroup" aria-labelledby="priorityLabel">
+                <label class="radio"><input type="radio" name="priority" value="Low" checked />Divorced</label>
+                 <label class="radio"><input type="radio" name="priority" value="High" />Widowed</label>
+                <label class="radio"><input type="radio" name="priority" value="Medium" />NEVER MARRIED</label>
+               
+              </div>
+            </div>
+
+            <div class="field full">
+              <label for="desc">Description</label>
+              <textarea id="desc" name="desc" rows="5" placeholder="Describe yourself..." required></textarea>
+              <div class="error" data-for="desc">Please write a short description.</div>
+            </div>
+
+            <div class="field full">
+              <label>Your photo</label>
+              <div id="fileDrop" class="file-drop" tabindex="0" aria-label="File uploader. Press to select files or drag and drop.">
+                <div>Drag & drop files here or <strong>click to browse</strong></div>
+                <input id="files" name="files" type="file" multiple hidden />
+                <div id="fileList" class="file-list" aria-live="polite"></div>
+              </div>
+            </div>
+
+            <div class="row full">
+              <label style="display:flex;align-items:center;gap:10px"><input id="terms" type="checkbox" required /> I agree to the terms & privacy policy</label>
+              <span class="error" data-for="terms">You must accept the terms.</span>
+            </div>
+
+            <div class="row full" style="justify-content:flex-end;margin-top:4px">
+              <button type="reset" class="btn btn--ghost">Reset</button>
+              <button type="submit" class="btn submitbtn">Submit Form</button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="card aside" aria-label="Helpful info">
+          <div class="stat"><span class="stat__dot"></span><div>
+            <div style="font-weight:700">99.9% Uptime</div>
+            <div class="stat__label">Your submission is safe & synced.</div></div></div>
+          <div class="stat"><span class="stat__dot" style="background:var(--warning)"></span><div>
+            <div style="font-weight:700">Review in 24–48 hrs</div>
+            <div class="stat__label">Average first response window.</div></div></div>
+          <div class="stat"><span class="stat__dot" style="background:var(--primary)"></span><div>
+            <div style="font-weight:700">Encrypted at Rest</div>
+            <div class="stat__label">We protect your documents.</div></div></div>
+          <div class="card" style="padding:14px;border-style:dashed">
+            <div style="font-weight:700;margin-bottom:6px">Quick Tips</div>
+            <ul style="margin:0 0 0 18px;color:var(--muted)">
+              <li>Accepted file types: PDF, DOCX, PNG, JPG</li>
+              <li>Max total upload size: 25 MB</li>
+              <li>plesase share every infromation about yourself in discription</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <p class="footer">© <span id="year"></span> Shaadi Portal. All rights reserved by Azhan.</p>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">✅ Filing submitted successfully!</div>
+    <div><a href="">
+      <div>
+    </a></div>
+</body>
+<script>
+  const drop = document.getElementById('fileDrop');
+  drop.addEventListener('click',()=> input.click());
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form"); 
+
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      window.location.href = "submitted.html";
+    });
+  }
+});
+
+
+</script>
+</html>
